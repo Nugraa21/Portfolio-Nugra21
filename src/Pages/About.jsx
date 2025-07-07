@@ -301,7 +301,7 @@ const AboutPage = () => {
                   data-aos-duration="800"
                 >
                   <a
-                    href="CV/Ludang prasetyo nugorho-resume.pdf"
+                    href="CV/Ludang prasetyo nugorho-resume_compressed.pdf"
                     className="w-full sm:w-auto"
                     target="_blank"
                     rel="noreferrer noopener"
