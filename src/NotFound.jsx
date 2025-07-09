@@ -38,36 +38,40 @@ const NotFound = () => {
         <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
       </Helmet>
 
-      <section className="min-h-screen flex items-center justify-center bg-yellow-50 px-4 sm:px-6 md:px-8 font-[Patrick_Hand]">
-        <div className="max-w-3xl mx-auto text-center bg-white border-4 border-dashed border-yellow-300 rounded-3xl shadow-[8px_8px_0_0_#facc15] p-8 sm:p-12">
-          <div className="flex justify-center mb-6 sm:mb-8" data-aos="zoom-in" data-aos-duration="800">
-            <AlertTriangle className="w-20 h-20 sm:w-28 sm:h-28 text-red-500 animate-bounce" />
+      <section className="min-h-screen flex items-center justify-center bg-white px-6 font-[Patrick_Hand]">
+        <div className="max-w-xl w-full text-center">
+          <div
+            className="flex justify-center mb-8"
+            data-aos="zoom-in"
+          >
+            <div className="bg-orange-100 p-6 rounded-full shadow-md animate-pulse">
+              <AlertTriangle className="w-20 h-20 text-orange-500 drop-shadow-lg" />
+            </div>
           </div>
           <h1
-            className="text-5xl sm:text-6xl md:text-7xl text-orange-600 mb-4 sm:mb-6 font-bold"
+            className="text-4xl sm:text-5xl text-gray-900 font-bold mb-4"
             data-aos="fade-up"
-            data-aos-duration="1000"
           >
             404 - Halaman Tidak Ditemukan
           </h1>
           <p
-            className="text-xl sm:text-2xl text-gray-700 mb-6 sm:mb-8"
+            className="text-lg sm:text-xl text-gray-600 mb-6"
             data-aos="fade-up"
-            data-aos-duration="1200"
+            data-aos-delay="100"
           >
-            Oops! Sepertinya halaman yang kamu cari tidak ada atau telah dipindahkan.
+            Wah! Kami tidak dapat menemukan halaman yang kamu cari. Mungkin sudah dipindahkan atau salah alamat.
           </p>
           <p
-            className="text-md sm:text-lg text-gray-600 italic mb-10"
+            className="text-sm text-gray-500 italic mb-10"
             data-aos="fade-up"
-            data-aos-duration="1300"
+            data-aos-delay="200"
           >
-            Jika kamu merasa ini adalah kesalahan, silakan hubungi <span className="font-semibold text-orange-500">Ludang Prasetyo Nugroho</span> melalui halaman kontak di <a href="https://nugra.my.id" className="underline hover:text-orange-600 transition">nugra.my.id</a>.
+            Jika ini kesalahan, silakan hubungi <span className="font-semibold text-orange-600">Ludang Prasetyo Nugroho</span> melalui <a href="https://nugra.my.id" className="underline hover:text-orange-500 transition">nugra.my.id</a>.
           </p>
-          <div className="flex justify-center" data-aos="fade-up" data-aos-duration="1400">
+          <div data-aos="fade-up" data-aos-delay="300">
             <Link to="/">
-              <button className="px-6 py-3 sm:px-8 sm:py-4 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 text-white font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl border-2 border-yellow-300">
-                <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+              <button className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-md transition-transform hover:scale-105">
+                <ArrowLeft className="w-5 h-5" />
                 Kembali ke Beranda
               </button>
             </Link>
@@ -77,5 +81,5 @@ const NotFound = () => {
     </>
   );
 };
-                   
+
 export default memo(NotFound);
