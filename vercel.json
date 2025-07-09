@@ -1,13 +1,8 @@
 {
-  "headers": [
+  "rewrites": [
     {
       "source": "/(.*)",
-      "headers": [
-        {
-          "key": "x-vercel-toolbar-override",
-          "value": "false"
-        }
-      ]
+      "destination": "/index.html"
     }
   ]
 }
