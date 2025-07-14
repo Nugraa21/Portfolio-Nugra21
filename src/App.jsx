@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
@@ -14,7 +14,28 @@ import Pengalaman from "./components/Pengalaman.jsx";
 import Dashboard from "./Pages/Dashboard.jsx";
 import { AnimatePresence } from 'framer-motion';
 import NotFound from "./NotFound.jsx";
-// import Galeri from "./Pages/Galeri.jsx"
+
+const WarningPopup = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
+        <h2 className="text-lg font-bold text-red-600 mb-4">Unauthorized Action</h2>
+        <p className="text-gray-700 mb-6">
+          Copying content, accessing source code, or opening developer tools is prohibited. 
+          Please respect the intellectual property of this website.
+        </p>
+        <button
+          onClick={onClose}
+          className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const LandingPage = ({ showWelcome, setShowWelcome }) => {
   return (
@@ -35,14 +56,10 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
             <Pengalaman />
             <Portofolio />
             <ContactPage />
-            {/* <Galeri /> */}
           </main>
 
-          {/* Footer */}
-          <footer className=" mt-12 xs:mt-16 px-2 xs:px-4 sm:px-6 md:px-8 lg:px-12 py-8 xs:py-10 text-gray-800 text-[10px] xs:text-xs sm:text-sm font-medium">
-
-
-            <div className="text-center mt-6 xs:mt-8 sm:mt-10 text-gray-500 text-[10px] xs:text-xs">
+          <footer className="mt-12 xs:mt-16 px-2 xs:px-4 sm:px-6 md:px-8 lg:px-12 py-8 xs:py-10 text-gray-800 text-[10px] xs:text-xs sm:text-sm font-medium">
+            <div className="text-center mt-6 xs:mt-8 sm:mt-10 text-gray-500">
               © 2025 Ludang Prasetyo Nugroho. Fullstack Developer.
             </div>
           </footer>
@@ -127,10 +144,48 @@ function CustomCursor() {
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
+  const [showWarning, setShowWarning] = useState(false);
+
+  useEffect(() => {
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+      setShowWarning(true);
+    };
+
+    const handleCopy = (e) => {
+      setShowWarning(true);
+    };
+
+    const handleKeyDown = (e) => {
+      // Detect F12, Ctrl+U, Ctrl+Shift+C, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+L
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.key === 'u') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'C') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'L')
+      ) {
+        e.preventDefault();
+        setShowWarning(true);
+      }
+    };
+
+    window.addEventListener('contextmenu', handleContextMenu);
+    window.addEventListener('copy', handleCopy);
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('contextmenu', handleContextMenu);
+      window.removeEventListener('copy', handleCopy);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
       <CustomCursor />
+      <WarningPopup isOpen={showWarning} onClose={() => setShowWarning(false)} />
       <BrowserRouter>
         <Routes>
           <Route
