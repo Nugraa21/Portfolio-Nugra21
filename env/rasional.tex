@@ -1,0 +1,576 @@
+% ------------------------------------------------
+% Template Laporan 
+% Dibuat oleh: Ludang Prasetyo Nugroho
+% Tahun: 2025
+% Website: https://nugra.my.id
+% ------------------------------------------------
+\frenchspacing
+\documentclass[12pt, a4paper]{report}
+
+% PAKET UNTUK PENGATURAN HALAMAN DAN FONT
+\usepackage[
+    a4paper,
+    left=4cm,
+    right=3cm,
+    top=4cm,
+    bottom=3cm
+]{geometry}
+\usepackage{newtxtext, newtxmath} % Menggunakan font Times New Roman
+
+% PAKET UNTUK GAMBAR
+\usepackage{graphicx}
+
+% PAKET UNTUK PENGATURAN JARAK BARIS (SPASI)
+\usepackage{setspace}
+
+% PAKET UNTUK KUSTOMISASI JUDUL (CHAPTER, SECTION, SUBSECTION)
+\usepackage{titlesec}
+
+% Membuat judul bab di tengah
+\titleformat{\chapter}[display]
+    {\normalfont\fontsize{16}{18}\bfseries\centering}
+    {BAB \thechapter}
+    {1em}
+    {\MakeUppercase}
+
+\titleformat{\section}{\normalfont\fontsize{14}{16}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+
+% PAKET UNTUK BAHASA INDONESIA
+\usepackage[indonesian]{babel}
+
+% PAKET UNTUK BIBLIOGRAFI
+\usepackage[authoryear]{natbib} % Use author-year style for APA
+
+% PAKET UNTUK HIPERLINK
+\usepackage[
+    colorlinks=true, % Use colored links instead of boxes
+    linkcolor=black, % Color for internal links (e.g., table of contents, references)
+    citecolor=black, % Color for citations
+    urlcolor=black, % Color for URLs
+    hypertexnames=false % Avoid issues with duplicate page numbers
+]{hyperref}
+\usepackage{bookmark} % Enhances bookmarks in PDF
+
+%------------------------------------------------
+% AWAL DOKUMEN
+%------------------------------------------------
+\begin{document}
+
+% Set Roman numerals for front matter
+\pagenumbering{roman}
+
+% HALAMAN JUDUL
+\begin{titlepage}
+    \centering
+    
+    % Judul Utama Laporan (Header 1 - 16pt, Bold)
+    {\fontsize{16}{18}\bfseries
+    LAPORAN AUDITOR SISTEM INFORMASI\par
+    }
+    
+    \vspace{1.5cm}
+    
+    \includegraphics[width=0.7\linewidth]{UTDI.png}
+      
+    \vspace{1.5cm}
+    
+    {\large
+    Laporan Ini Disusun untuk Memenuhi Tugas Mata Kuliah Sistem Auditor\par
+    }
+    
+    \vspace{3cm}
+    
+    {\bfseries
+    Disusun oleh:\par
+    Ludang Prasetyo Nugroho (225510017)\par
+    }
+    
+    \vfill % Mendorong konten berikutnya ke bawah halaman
+    
+    {\large
+    PROGRAM STUDI TEKNIK KOMPUTER \par
+    FAKULTAS TEKNOLOGI INFORMASI \par
+    UNIVERSITAS TEKNOLOGI DIGITAL INDONESIA \par
+    TAHUN 2025 \par
+    }
+\end{titlepage}
+
+% DAFTAR ISI
+\tableofcontents
+\newpage
+
+% MENGATUR SPASI DOKUMEN MENJADI 1.5
+\onehalfspacing
+
+% Switch to Arabic numerals for main content
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%------------------------------------------------
+% BAB 1 - PENDAHULUAN
+%------------------------------------------------
+\chapter{Pendahuluan}
+\label{bab:pendahuluan}
+
+\section{Latar Belakang}
+
+Kafe Main-Main merupakan sebuah usaha di bidang food and beverage yang berlokasi di Jl. Sukun Raya No. 422, Banguntapan, Bantul, Yogyakarta. Kafe ini mengusung konsep semi-outdoor yang nyaman dan estetik, dengan fasilitas yang mendukung aktivitas seperti bersantai, bekerja, hingga membaca buku. Selain menyajikan makanan dan minuman, Kafe Main-Main juga terintegrasi dengan toko buku sehingga menjadi tempat yang cocok bagi pengunjung yang ingin menikmati suasana tenang sambil membaca.
+
+Dalam menjalankan operasionalnya, kafe ini telah memanfaatkan berbagai teknologi informasi, seperti sistem Point of Sale (POS) untuk mencatat transaksi, sistem pembayaran digital seperti QRIS dan dompet elektronik, serta jaringan Wi-Fi gratis yang tersedia bagi pelanggan dan staf. Pemanfaatan teknologi tersebut bertujuan untuk meningkatkan efisiensi pelayanan, memberikan kemudahan transaksi, serta menciptakan pengalaman pelanggan yang lebih baik.
+
+Namun, di balik pemanfaatan teknologi tersebut terdapat potensi risiko yang tidak dapat diabaikan, seperti kebocoran data pelanggan, akses tidak sah ke sistem kasir, serta ancaman siber melalui jaringan Wi-Fi publik. Risiko tersebut dapat menimbulkan dampak serius, baik terhadap operasional kafe maupun kepercayaan pelanggan. Oleh karena itu, perlu dilakukan evaluasi menyeluruh terhadap sistem informasi yang digunakan untuk memastikan bahwa keamanan, integritas, dan kerahasiaan data dapat terjaga dengan baik.
+
+Audit sistem informasi pada Kafe Main-Main dilaksanakan sebagai bentuk upaya preventif untuk menilai efektivitas penerapan kontrol keamanan informasi. Audit ini mengacu pada standar internasional ISO/IEC 27001:2022 yang menyediakan kerangka kerja sistematis dalam mengelola risiko keamanan informasi. Melalui audit ini, diharapkan dapat diidentifikasi area yang sudah sesuai standar serta area yang perlu dilakukan perbaikan atau peningkatan.
+
+Pelaksanaan audit ini juga bertujuan sebagai pemenuhan tugas akademik dalam mata kuliah Sistem Auditor pada program studi Teknik Komputer, Universitas Teknologi Digital Indonesia. Kegiatan ini menjadi sarana pembelajaran bagi mahasiswa untuk memahami proses audit sistem informasi secara langsung dan nyata, serta mengembangkan keterampilan analisis berbasis data yang sesuai dengan praktik profesional. Dengan adanya laporan ini, tidak hanya tercapai pemahaman teknis, tetapi juga kontribusi nyata dalam peningkatan keamanan informasi pada skala usaha kecil seperti Kafe Main-Main.
+
+\section{Tujuan}
+
+Audit sistem informasi yang dilakukan terhadap Kafe Main-Main bertujuan untuk mengevaluasi sistem yang digunakan dalam mendukung operasional harian, serta memastikan bahwa seluruh aspek teknologi informasi yang diterapkan berjalan dengan aman, efisien, dan sesuai standar keamanan informasi. Secara khusus, tujuan dari audit ini adalah:
+
+\begin{enumerate}
+    \item Menilai tingkat keamanan data transaksi dan data pelanggan yang dikelola oleh sistem informasi Kafe Main-Main.
+    
+    \item Mengevaluasi efisiensi serta keandalan infrastruktur teknologi informasi yang digunakan, termasuk sistem Point of Sale (POS), sistem pembayaran digital, dan jaringan Wi-Fi.
+    
+    \item Memberikan dasar bagi pengambilan keputusan manajerial melalui rekomendasi perbaikan terhadap kelemahan sistem informasi, dengan acuan standar ISO/IEC 27001:2022.
+\end{enumerate}
+
+\section{Rumusan Masalah}
+
+Audit sistem informasi pada Kafe Main-Main dilakukan untuk menjawab beberapa permasalahan yang berkaitan dengan keamanan dan efisiensi sistem yang digunakan. Berdasarkan hasil observasi awal dan temuan dari proses audit, rumusan masalah yang dapat diidentifikasi adalah sebagai berikut:
+
+\begin{enumerate}
+    \item Apakah sistem informasi yang digunakan Kafe Main-Main, seperti POS, jaringan Wi-Fi, dan sistem pembayaran digital, telah menerapkan prinsip-prinsip keamanan informasi sesuai standar ISO/IEC 27001:2022?
+    
+    \item Apakah terdapat kontrol keamanan yang belum diterapkan secara optimal, seperti pemisahan jaringan, penggunaan akun login individual, backup sistem, dan pelatihan keamanan informasi bagi staf?
+    
+    \item Bagaimana rekomendasi perbaikan yang dapat diberikan agar Kafe Main-Main dapat meningkatkan postur keamanan informasi serta mengurangi risiko terhadap potensi ancaman digital?
+\end{enumerate}
+
+\section{Ruang Lingkup}
+
+Audit sistem informasi pada Kafe Main-Main difokuskan pada area-area teknologi yang secara langsung mendukung operasional bisnis harian, serta memiliki potensi risiko terhadap keamanan informasi. Penentuan ruang lingkup ini dilakukan agar proses audit lebih terarah, efisien, dan sesuai dengan kebutuhan usaha serta standar ISO/IEC 27001:2022.
+
+Adapun ruang lingkup audit sistem informasi ini mencakup:
+
+\begin{itemize}
+    \item \textbf{Sistem Point of Sale (POS)}, yang digunakan untuk mencatat transaksi penjualan, menyimpan data produk, serta menghasilkan laporan keuangan harian.
+
+    \item \textbf{Sistem pembayaran digital}, termasuk penggunaan QRIS, dompet digital, dan kartu debit/kredit yang diintegrasikan dengan sistem POS.
+
+    \item \textbf{Jaringan Wi-Fi}, baik jaringan publik untuk pelanggan maupun jaringan internal untuk staf dan sistem kasir.
+
+    \item \textbf{Data pelanggan}, khususnya yang berkaitan dengan program loyalitas, termasuk penyimpanan dan perlindungan nomor telepon serta riwayat transaksi pelanggan.
+\end{itemize}
+
+Seluruh fokus audit pada area tersebut akan dinilai berdasarkan kontrol yang terdapat dalam standar ISO/IEC 27001:2022, seperti pengelolaan akun pengguna, manajemen password, segmentasi jaringan, perlindungan informasi pelanggan, sistem pencatatan log (logging), backup data, serta kesadaran keamanan informasi di kalangan staf. Audit ini tidak mencakup aspek non-teknis seperti strategi pemasaran, pelayanan pelanggan secara langsung, atau keuangan di luar sistem digital.
+
+\section{Metodologi}
+\label{sec:metodologi}
+
+Audit sistem informasi yang dilakukan pada Kafe Main Main menggunakan pendekatan yang sistematis dan terstruktur, mengacu pada prinsip-prinsip yang ditetapkan dalam standar ISO/IEC 27001:2022. Pendekatan ini bertujuan untuk memastikan bahwa proses audit menghasilkan temuan yang valid, objektif, dan dapat digunakan sebagai dasar dalam peningkatan keamanan informasi secara menyeluruh.
+
+Proses audit dilakukan melalui beberapa tahapan utama sebagai berikut:
+
+\begin{enumerate}
+    \item \textbf{Perencanaan Audit} \\
+    Pada tahap ini, auditor menetapkan ruang lingkup (\textit{scope}), batasan (\textit{boundary}), tujuan, serta objek audit yang akan dianalisis. Selain itu, dilakukan identifikasi terhadap sistem dan aset informasi yang menjadi fokus audit, serta penyusunan jadwal kegiatan secara sistematis. Auditor juga melakukan studi awal untuk memahami proses bisnis dan arsitektur sistem informasi yang digunakan oleh Kafe Main Main.
+    
+    \item \textbf{Pengumpulan Data} \\
+    Data dikumpulkan menggunakan berbagai teknik untuk memperoleh informasi yang akurat dan komprehensif, antara lain:
+    \begin{itemize}
+        \item \textit{Observasi langsung}, yaitu dengan mengamati kondisi infrastruktur fisik dan operasional teknologi informasi secara nyata (misalnya: penempatan router, perangkat kasir, serta akses CCTV).
+        \item \textit{Wawancara dan diskusi} bersama staf kafe yang terlibat dalam pengelolaan sistem informasi, khususnya penggunaan sistem kasir dan jaringan.
+        \item \textit{Studi dokumentasi}, berupa peninjauan terhadap konfigurasi sistem Point of Sales (POS), pengaturan jaringan, dan kebijakan pengelolaan data yang tersedia.
+        \item \textit{Pemeriksaan teknis}, seperti melakukan \textit{network probing}, uji akses, serta validasi terhadap konfigurasi perangkat keras dan perangkat lunak.
+    \end{itemize}
+    
+    \item \textbf{Evaluasi dan Analisis} \\
+    Setelah seluruh data terkumpul, auditor melakukan evaluasi terhadap kontrol keamanan informasi berdasarkan domain utama yang terdapat dalam ISO/IEC 27001:2022, yang meliputi:
+    \begin{itemize}
+        \item Kontrol akses
+        \item Keamanan fisik dan lingkungan
+        \item Keamanan komunikasi
+        \item Pengamanan sistem dan aplikasi
+        \item Manajemen aset informasi
+        \item Keamanan jaringan
+        \item Pengelolaan insiden keamanan informasi (jika ditemukan)
+    \end{itemize}
+    Evaluasi ini bertujuan untuk mengidentifikasi potensi celah keamanan (\textit{vulnerabilities}), ketidaksesuaian (\textit{non-conformities}), dan risiko yang mungkin terjadi dalam sistem informasi yang digunakan di Kafe Main Main.
+
+    \item \textbf{Pelaporan Hasil Audit} \\
+    Seluruh hasil evaluasi dan analisis disusun dalam bentuk laporan audit yang mencakup:
+    \begin{itemize}
+        \item Temuan audit
+        \item Risiko potensial yang diidentifikasi
+        \item Dampak ketidaksesuaian terhadap keberlangsungan sistem
+        \item Rekomendasi strategis untuk perbaikan dan peningkatan keamanan informasi
+    \end{itemize}
+    Laporan disusun secara jelas dan ringkas serta dikategorikan berdasarkan tingkat prioritas, sehingga dapat menjadi acuan bagi manajemen Kafe Main Main dalam pengambilan keputusan.
+
+    \item \textbf{Tindak Lanjut (Opsional)} \\
+    Tahapan ini bersifat opsional dan tidak dilakukan dalam konteks tugas ini. Namun, dalam praktik audit profesional, tindak lanjut memiliki peranan penting untuk mengevaluasi apakah rekomendasi telah diterapkan dan apakah terdapat peningkatan pada kontrol keamanan yang sebelumnya diuji.
+\end{enumerate}
+
+Metodologi ini dirancang untuk memberikan gambaran menyeluruh mengenai kondisi sistem informasi dan tingkat kepatuhannya terhadap prinsip keamanan informasi. Dengan pendekatan ini, audit diharapkan dapat membantu Kafe Main Main dalam mengelola risiko, melindungi data pelanggan, serta memperkuat sistem operasional secara berkelanjutan.
+
+%------------------------------------------------
+% BAB 2 - PEMILIHAN DOMAIN
+%------------------------------------------------
+\chapter{ISO yang Digunakan}
+\label{bab:domain}
+
+\section{Pemilihan Kerangka Kerja}
+
+Audit sistem informasi pada Kafe Main-Main menggunakan kerangka kerja dari standar internasional ISO/IEC 27001:2022. Standar ini merupakan bagian dari keluarga ISO/IEC 27000 yang berfokus pada sistem manajemen keamanan informasi atau Information Security Management System (ISMS). ISO/IEC 27001:2022 menyediakan pendekatan berbasis risiko dalam menetapkan, mengimplementasikan, mengelola, dan meningkatkan keamanan informasi secara berkelanjutan \citep{iso27001}.
+
+Penggunaan standar ini dinilai relevan karena Kafe Main-Main telah memanfaatkan berbagai sistem digital dalam operasional hariannya, seperti sistem Point of Sale (POS), jaringan Wi-Fi, dan metode pembayaran nontunai seperti QRIS. Sistem-sistem tersebut menyimpan dan memproses informasi penting seperti data pelanggan, transaksi keuangan, dan akses jaringan yang jika tidak dikelola dengan aman dapat menimbulkan risiko kebocoran data maupun ancaman siber lainnya \citep{cafedigital}.
+
+\section{Alasan Pemilihan ISO/IEC 27001:2022}
+
+ISO/IEC 27001:2022 dipilih karena memiliki struktur kontrol yang fleksibel dan dapat diterapkan pada organisasi dari berbagai skala, termasuk usaha kecil dan menengah (UKM) seperti Kafe Main-Main \citep{rijal2022iso}. Standar ini tidak hanya menekankan pada pengamanan teknis, tetapi juga pada aspek kebijakan, proses internal, dan kesadaran sumber daya manusia terhadap keamanan informasi \citep{permatasari2023manajemen}.
+
+ISO/IEC 27001:2022 juga mendukung pelaksanaan audit keamanan informasi yang objektif dan sistematis. Dengan adanya daftar kontrol dalam Annex A, auditor dapat mengidentifikasi kontrol yang sudah berjalan dengan baik serta menemukan kelemahan sistem berdasarkan prinsip confidentiality, integrity, dan availability (CIA). Ini memberikan dasar yang kuat dalam menyusun rekomendasi yang sesuai dengan kondisi aktual dan kebutuhan organisasi \citep{ratnasari2021penerapan}.
+
+Selain itu, penerapan standar ini juga memberikan nilai tambah berupa kepercayaan pelanggan terhadap perlindungan data yang mereka berikan saat bertransaksi, terutama dalam konteks digitalisasi layanan di sektor UMKM.
+
+\section{Klausul ISO/IEC 27001:2022 yang Diaudit}
+
+Berdasarkan hasil observasi dan asesmen awal, tidak seluruh kontrol dalam ISO/IEC 27001:2022 diterapkan dalam audit ini. Auditor hanya memilih beberapa klausul yang paling relevan dan berisiko tinggi dalam konteks operasional Kafe Main-Main. Klausul-klausul tersebut berasal dari Annex A ISO/IEC 27001:2022 dan dijabarkan sebagai berikut:
+
+\begin{enumerate}
+    \item \textbf{Klausul A.5.9 – Penggunaan Akun Pengguna} \\
+    Staf Kafe Main-Main masih menggunakan akun bersama untuk mengakses sistem POS, yang menyebabkan rendahnya akuntabilitas. Padahal, kontrol ini menekankan pentingnya penggunaan akun individual agar setiap aktivitas dapat ditelusuri secara jelas \citep{widodo2022keamanan}.
+
+    \item \textbf{Klausul A.5.13 – Pengelolaan Autentikasi} \\
+    Sistem autentikasi masih lemah, dengan password yang jarang diperbarui dan belum diterapkan autentikasi dua faktor (2FA). Hal ini meningkatkan risiko akses tidak sah ke dalam sistem \citep{rijal2022iso}.
+
+    \item \textbf{Klausul A.5.20 – Perlindungan Informasi Pelanggan} \\
+    Data pelanggan seperti nomor telepon yang tersimpan pada sistem loyalitas pelanggan belum terlindungi dengan enkripsi menyeluruh, dan tidak ada kebijakan eksplisit mengenai hak akses terhadap data tersebut \citep{ratnasari2021penerapan}.
+
+    \item \textbf{Klausul A.5.23 – Logging dan Monitoring} \\
+    Sistem POS mencatat aktivitas, tetapi log tidak dimonitor secara aktif. Hal ini membuat potensi penyusupan atau kesalahan sistem sulit terdeteksi secara dini \citep{sari2023backup}.
+
+    \item \textbf{Klausul A.5.30 – Segmentasi Jaringan} \\
+    Saat ini, Wi-Fi untuk pelanggan dan staf masih berada dalam satu jaringan yang sama. Hal ini membuka kemungkinan terjadinya serangan dari perangkat pelanggan ke sistem internal kafe \citep{haryanto2021wifi}.
+
+    \item \textbf{Klausul A.5.32 – Pengelolaan Backup} \\
+    Proses pencadangan data dilakukan, namun belum memiliki jadwal tetap, dan belum diuji secara berkala untuk memastikan keberhasilan pemulihan data \citep{sari2023backup}.
+
+    \item \textbf{Klausul A.6.3 – Kesadaran Keamanan Informasi} \\
+    Staf belum pernah mengikuti pelatihan khusus terkait keamanan informasi. Tidak ada dokumentasi sosialisasi kebijakan keamanan atau prosedur pelaporan insiden \citep{pratama2022pelatihan}.
+\end{enumerate}
+
+Fokus pada klausul-klausul tersebut membantu auditor dalam menyusun rekomendasi yang konkret dan realistis, serta dapat langsung diimplementasikan dalam skala usaha kecil seperti Kafe Main-Main.
+
+%------------------------------------------------
+% BAB 3 - PERANCANGAN PERTANYAAN
+%------------------------------------------------
+\chapter{PERANCANGAN PERTANYAAN BERDASARKAN KLAUSUL}
+\label{bab:pertanyaan}
+
+% \section{Pendahuluan}
+% Perancangan pertanyaan audit merupakan tahap penting untuk mengevaluasi kepatuhan sistem informasi Kafe Main-Main terhadap standar ISO/IEC 27001:2022. Pertanyaan dirancang untuk menilai keamanan dan efisiensi sistem \textit{Point of Sale} (POS), pembayaran digital, jaringan Wi-Fi, dan pengelolaan data pelanggan. Proses ini bertujuan mengidentifikasi celah keamanan dan memberikan rekomendasi perbaikan yang realistis untuk usaha kecil menengah (UKM). Pertanyaan berfokus pada klausul ISO/IEC 27001:2022 yang relevan, berdasarkan temuan awal seperti kelemahan otentikasi POS, kurangnya segmentasi jaringan, dan absennya kebijakan backup \citep{auditkafe2025, laporanaudit}. Bab ini menjelaskan pendekatan perancangan, klausul yang digunakan, contoh pertanyaan, dan alasan pemilihan pertanyaan \citep{iso27001, frangky2024implementasi}.
+
+\section{Pendekatan Perancangan Pertanyaan}
+
+Perancangan pertanyaan audit merupakan tahap krusial untuk mengevaluasi kepatuhan sistem informasi Kafe Main-Main terhadap standar ISO/IEC 27001:2022. Pertanyaan dirancang dengan pendekatan berbasis risiko, mengacu pada klausul-klausul relevan dalam Annex A yang disesuaikan dengan operasional Kafe Main-Main, khususnya pada sistem \textit{Point of Sale} (POS), pembayaran digital, jaringan Wi-Fi, dan pengelolaan data pelanggan. Pendekatan ini dipilih berdasarkan temuan awal yang mengidentifikasi adanya kelemahan signifikan, seperti pada mekanisme otentikasi POS, kurangnya segmentasi jaringan, dan absennya kebijakan pencadangan (\textit{backup}) data \citep{auditakademik2015}.
+
+Setiap pertanyaan disusun secara strategis untuk tujuan berikut:
+\begin{itemize}
+    \item Mengukur kepatuhan terhadap klausul spesifik.
+    \item Mengidentifikasi celah dan risiko keamanan, seperti akses tidak sah atau kebocoran data.
+    \item Menghasilkan data yang mendukung rekomendasi perbaikan yang realistis dan dapat diterapkan oleh usaha kecil menengah (UKM) \citep{rokhman2018implementasi}.
+\end{itemize}
+Untuk memastikan validitas dan relevansinya, rancangan pertanyaan ini kemudian diuji melalui triangulasi metode, yaitu wawancara dengan staf, observasi sistem secara langsung, dan pemeriksaan dokumen \citep{permatasari2023manajemen, iso27001}.
+\section{Klausul ISO/IEC 27001:2022 yang Digunakan}
+Berdasarkan ruang lingkup audit, klausul berikut dipilih:
+\begin{itemize}
+    \item \textbf{A.5.9 – Penggunaan Akun Pengguna}: Memeriksa akun individu untuk akuntabilitas.
+    \item \textbf{A.5.13 – Pengelolaan Autentikasi}: Menilai kekuatan otentikasi sistem.
+    \item \textbf{A.5.20 – Perlindungan Informasi Pelanggan}: Mengevaluasi enkripsi dan akses data pelanggan.
+    \item \textbf{A.5.23 – Logging dan Monitoring}: Memastikan pemantauan aktif aktivitas sistem.
+    \item \textbf{A.5.30 – Segmentasi Jaringan}: Menilai pemisahan jaringan publik dan internal.
+    \item \textbf{A.5.32 – Pengelolaan Backup}: Memeriksa jadwal dan pengujian backup.
+    \item \textbf{A.6.3 – Kesadaran Keamanan Informasi}: Menilai pelatihan staf \citep{iso27001, widodo2022keamanan}.
+\end{itemize}
+
+% \section{Contoh Pertanyaan Audit}
+% Berikut adalah pertanyaan audit untuk setiap klausul, dirancang untuk menggali informasi mendalam:
+
+% \subsection{Pertanyaan Berdasarkan Klausul A.5.9: Penggunaan Akun Pengguna}
+% \begin{enumerate}
+%     \item Apakah setiap staf memiliki akun individu untuk mengakses sistem POS?
+%     \item Bagaimana prosedur pemberian dan pencabutan akses akun pengguna?
+%     \item Apakah aktivitas akun pengguna dicatat untuk pelacakan? \citep{widodo2022keamanan}
+% \end{enumerate}
+
+% \subsection{Pertanyaan Berdasarkan Klausul A.5.13: Pengelolaan Autentikasi}
+% \begin{enumerate}
+%     \item Apakah sistem POS menggunakan kata sandi unik dan kuat untuk setiap pengguna?
+%     \item Apakah autentikasi dua faktor diterapkan pada sistem kritis?
+%     \item Seberapa sering kata sandi diperbarui dan diaudit? \citep{rijal2022iso}
+% \end{enumerate}
+
+% \subsection{Pertanyaan Berdasarkan Klausul A.5.20: Perlindungan Informasi Pelanggan}
+% \begin{enumerate}
+%     \item Apakah data pelanggan dalam program loyalitas disimpan dalam format terenkripsi?
+%     \item Bagaimana prosedur penghapusan data pelanggan yang tidak aktif?
+%     \item Apakah akses ke data pelanggan dibatasi hanya untuk staf berwenang? \citep{ratnasari2021pelindungan}
+% \end{enumerate}
+
+% \subsection{Pertanyaan Berdasarkan Klausul A.5.23: Logging dan Monitoring}
+% \begin{enumerate}
+%     \item Apakah sistem POS dan pembayaran digital memiliki sistem logging aktivitas?
+%     \item Bagaimana log jaringan Wi-Fi dipantau untuk mendeteksi ancaman?
+%     \item Apakah log ditinjau secara berkala untuk mengidentifikasi anomali? \citep{sari2023backup}
+% \end{enumerate}
+
+% \subsection{Pertanyaan Berdasarkan Klausul A.5.30: Segmentasi Jaringan}
+% \begin{enumerate}
+%     \item Apakah jaringan Wi-Fi publik dan internal terpisah secara logis?
+%     \item Bagaimana pengaturan firewall untuk mencegah akses tidak sah?
+%     \item Apakah lalu lintas jaringan dipantau untuk mendeteksi aktivitas mencurigakan? \citep{haryanto2021wifi}
+% \end{enumerate}
+
+% \subsection{Pertanyaan Berdasarkan Klausul A.5.32: Pengelolaan Backup}
+% \begin{enumerate}
+%     \item Apakah Kafe Main-Main memiliki jadwal backup data yang teratur?
+%     \item Apakah sistem backup diuji secara berkala untuk memastikan pemulihan data?
+%     \item Bagaimana data cadangan dilindungi dari akses tidak sah? \citepsari2023backup}
+% \end{enumerate}
+
+% \subsection{Pertanyaan Berdasarkan Klausul A.6.3: Kesadaran Keamanan Informasi}
+% \begin{enumerate}
+%     \item Apakah staf menerima pelatihan keamanan informasi secara rutin?
+%     \item Apakah terdapat prosedur pelaporan insiden keamanan?
+%     \item Bagaimana kebijakan keamanan informasi disosialisasikan kepada staf? \citep{pratama2022pelatihan}
+% \end{enumerate}
+
+\section{Contoh Pertanyaan Audit dengan Rasionalisasi}
+Berikut adalah pertanyaan audit yang telah disempurnakan untuk setiap kontrol relevan dari ISO/IEC 27001:2022 Annex A. Setiap pertanyaan disertai dengan rasionalisasi yang menjelaskan tujuan dan relevansinya dalam mengukur kepatuhan dan mengidentifikasi risiko.
+
+\subsection{Pertanyaan Berdasarkan Kontrol A.5.15: \textit{Access Control}}
+\begin{enumerate}
+    \item Apakah setiap staf (kasir, manajer, dll.) memiliki akun pengguna individual untuk mengakses sistem POS?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Pertanyaan ini bertujuan untuk memverifikasi penerapan prinsip akuntabilitas (\textit{accountability}). Menurut kontrol A.5.15, akses harus diberikan berdasarkan kebutuhan bisnis dan kebijakan yang jelas. Akun individual memastikan bahwa setiap tindakan (misalnya, transaksi, diskon, atau pembatalan) dapat dilacak kembali ke orang yang bertanggung jawab. Penggunaan akun bersama (shared account) menghilangkan jejak audit dan mempersulit investigasi jika terjadi insiden penyalahgunaan.
+    \end{itemize}
+
+    \item Bagaimana prosedur formal untuk pemberian, modifikasi, dan pencabutan hak akses akun pengguna saat staf bergabung, pindah tugas, atau berhenti?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Ini menguji keberadaan dan efektivitas proses manajemen siklus hidup akses pengguna (\textit{user access lifecycle management}). Kontrol A.5.15 menekankan bahwa hak akses harus ditinjau secara berkala dan dicabut saat tidak lagi diperlukan. Prosedur yang tidak jelas berisiko menyebabkan adanya "akun yatim" (\textit{orphan accounts}) dari mantan staf yang dapat disalahgunakan untuk akses tidak sah.
+    \end{itemize}
+    
+    \item Apakah seluruh aktivitas yang dilakukan oleh setiap akun pengguna pada sistem POS dicatat (di-\textit{log}) untuk keperluan pelacakan dan tinjauan? \citep{widodo2022keamanan}
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Pertanyaan ini menghubungkan kontrol akses dengan kontrol logging (A.8.15). Tujuannya adalah memastikan bahwa akuntabilitas yang diciptakan oleh akun individual didukung oleh bukti digital (\textit{log}). Log ini sangat penting untuk audit keamanan, pemantauan aktivitas mencurigakan, dan analisis forensik pasca-insiden.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Pertanyaan Berdasarkan Kontrol A.5.17: \textit{Authentication Information}}
+\begin{enumerate}
+    \item Apakah sistem mewajibkan penggunaan kata sandi (\textit{password}) yang unik dan memenuhi standar kekuatan minimum (misalnya, kombinasi huruf, angka, simbol) untuk setiap pengguna?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Ini secara langsung mengaudit mekanisme perlindungan informasi autentikasi. Kontrol A.5.17 mensyaratkan bahwa informasi autentikasi (seperti kata sandi) harus dilindungi dari penyalahgunaan. Kata sandi yang lemah atau mudah ditebak adalah salah satu vektor serangan paling umum. Pertanyaan ini memverifikasi baris pertahanan pertama dalam autentikasi.
+    \end{itemize}
+
+    \item Apakah mekanisme autentikasi multi-faktor (MFA/2FA) diterapkan untuk akses ke sistem kritis, terutama untuk fungsi administratif atau akses jarak jauh?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Pertanyaan ini menggali penerapan mekanisme autentikasi yang lebih kuat (\textit{strong authentication}). ISO 27001 menganjurkan pendekatan berbasis risiko; untuk sistem dengan risiko tinggi (seperti sistem pembayaran atau basis data pelanggan), satu faktor autentikasi (kata sandi) seringkali tidak cukup. MFA memberikan lapisan keamanan tambahan yang signifikan.
+    \end{itemize}
+    
+    \item Seberapa sering kebijakan kata sandi (misalnya, rotasi atau peninjauan kekuatan kata sandi) ditinjau ulang dan diaudit oleh manajemen? \citep{rijal2022iso}
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Keamanan autentikasi bukanlah proses "sekali jadi". Pertanyaan ini menguji aspek tata kelola dan pemeliharaan keamanan. Kontrol A.5.17 menyiratkan bahwa efektivitas informasi autentikasi perlu ditinjau secara berkala untuk memastikan relevansinya terhadap ancaman yang terus berkembang.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Pertanyaan Berdasarkan Kontrol A.8.24, A.8.10 \& A.5.14}
+Pertanyaan ini mencakup beberapa kontrol sekaligus: Penggunaan Kriptografi (A.8.24), Penghapusan Informasi (A.8.10), dan Pembatasan Akses Informasi (A.5.14).
+\begin{enumerate}
+    \item Apakah data pribadi pelanggan (misalnya, nama, nomor telepon) dalam program loyalitas disimpan dalam format terenkripsi baik saat disimpan (\textit{at rest}) maupun saat dikirim (\textit{in transit})?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Ini menilai penerapan kontrol kriptografi (A.8.24) untuk melindungi kerahasiaan data. Enkripsi adalah benteng pertahanan terakhir; jika sistem berhasil diretas dan data dicuri, enkripsi yang kuat akan membuat data tersebut tidak berguna bagi penyerang. Ini sangat penting untuk mematuhi regulasi privasi data.
+    \end{itemize}
+
+    \item Apakah terdapat prosedur standar untuk menghapus data pelanggan yang sudah tidak aktif atau tidak lagi diperlukan sesuai dengan kebijakan retensi data?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Pertanyaan ini menguji kepatuhan terhadap kontrol penghapusan informasi (A.8.10) dan prinsip minimalisasi data. Menyimpan data lebih lama dari yang diperlukan akan meningkatkan risiko dan paparan jika terjadi kebocoran data. Prosedur penghapusan yang jelas memastikan data tidak menumpuk tanpa tujuan.
+    \end{itemize}
+    
+    \item Bagaimana cara memastikan bahwa akses ke basis data pelanggan dibatasi hanya untuk staf yang memiliki kewenangan dan kebutuhan bisnis yang jelas (prinsip \textit{least privilege})? \citep{ratnasari2021pelindungan}
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Ini memverifikasi penerapan kontrol pembatasan akses informasi (A.5.14) dan prinsip "hak akses paling minim". Tidak semua staf perlu melihat data pelanggan. Dengan membatasi akses, kafe dapat mengurangi risiko kebocoran data baik yang disengaja maupun tidak disengaja oleh staf internal.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Pertanyaan Berdasarkan Kontrol A.8.15: \textit{Logging}}
+\begin{enumerate}
+    \item Apakah sistem POS dan sistem pembayaran digital dikonfigurasi untuk menghasilkan log yang mencatat peristiwa penting (misalnya, login berhasil/gagal, transaksi, perubahan konfigurasi)?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Ini adalah dasar dari kontrol \textit{logging} (A.8.15). Tanpa log, tidak ada bukti atau jejak digital. Log peristiwa adalah sumber data utama untuk mendeteksi, menyelidiki, dan merespons insiden keamanan. Pertanyaan ini memeriksa apakah data mentah untuk pemantauan sudah tersedia.
+    \end{itemize}
+
+    \item Bagaimana log dari titik akses (access point) Wi-Fi dan firewall dipantau untuk mendeteksi upaya koneksi yang tidak sah atau anomali lalu lintas jaringan?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Fokusnya adalah pada pemantauan proaktif. Mengumpulkan log saja tidak cukup; log tersebut harus dianalisis. Pertanyaan ini menilai apakah kafe memanfaatkan log jaringan untuk mendeteksi potensi ancaman secara dini, seperti serangan \textit{brute-force} pada Wi-Fi atau pemindaian port dari internet.
+    \end{itemize}
+    
+    \item Apakah ada jadwal dan penanggung jawab yang jelas untuk meninjau log secara berkala guna mengidentifikasi pola aktivitas yang mencurigakan atau anomali? \citep{sari2023backup}
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Pertanyaan ini menguji aspek prosedural dan tata kelola dari \textit{logging} dan \textit{monitoring}. Peninjauan log yang teratur dan terjadwal mengubah data log menjadi intelijen keamanan yang dapat ditindaklanjuti, memastikan bahwa anomali tidak terlewatkan.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Pertanyaan Berdasarkan Kontrol A.8.23: \textit{Network Segregation}}
+\begin{enumerate}
+    \item Apakah jaringan yang digunakan untuk operasional internal (misalnya, sistem POS, printer kasir) terpisah secara logis maupun fisik dari jaringan Wi-Fi yang disediakan untuk pelanggan?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Ini adalah inti dari kontrol segmentasi jaringan (A.8.23). Memisahkan jaringan internal yang tepercaya dari jaringan tamu yang tidak tepercaya adalah fundamental. Ini mencegah pengguna di jaringan Wi-Fi publik mencoba mengakses atau menyerang sistem kritis seperti POS, sehingga dapat membatasi penyebaran serangan.
+    \end{itemize}
+
+    \item Bagaimana aturan \textit{firewall} dikonfigurasi untuk mengontrol lalu lintas data antar segmen jaringan dan antara jaringan internal dengan internet?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Segmentasi jaringan diimplementasikan melalui perangkat seperti \textit{firewall}. Pertanyaan ini menggali lebih dalam untuk memahami bagaimana pemisahan itu ditegakkan secara teknis. Aturan \textit{firewall} yang dikonfigurasi dengan benar memastikan hanya lalu lintas yang sah yang diizinkan, memblokir upaya akses yang tidak diinginkan.
+    \end{itemize}
+    
+    \item Apakah lalu lintas jaringan di antara segmen-segmen tersebut dipantau untuk mendeteksi upaya pelanggaran batas atau aktivitas mencurigakan lainnya? \citep{haryanto2021wifi}
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Pertanyaan ini menggabungkan segmentasi dengan pemantauan. Asumsinya adalah bahwa upaya pelanggaran mungkin saja terjadi. Dengan memantau lalu lintas di "perbatasan" antar segmen, tim dapat mendeteksi jika seseorang dari jaringan tamu mencoba "melompat" ke jaringan internal.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Pertanyaan Berdasarkan Kontrol A.8.13: \textit{Information Backup}}
+\begin{enumerate}
+    \item Apakah Kafe Main-Main memiliki jadwal dan prosedur terdokumentasi untuk melakukan pencadangan (\textit{backup}) data penting secara teratur (misalnya, data transaksi, data pelanggan)?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Ini menguji aspek paling dasar dari kontrol \textit{backup} (A.8.13), yaitu konsistensi dan formalitas. Jadwal yang teratur memastikan data yang dicadangkan selalu relevan. Prosedur yang terdokumentasi memastikan proses ini dapat diandalkan dan tidak bergantung pada satu orang saja, yang sangat penting untuk kelangsungan bisnis.
+    \end{itemize}
+
+    \item Apakah proses pemulihan data dari \textit{backup} pernah diuji secara berkala untuk memastikan data tersebut benar-benar dapat dipulihkan dan berfungsi saat dibutuhkan (uji restorasi)?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] \textit{Backup} yang belum pernah diuji restorasi tidak dapat diandalkan. Pertanyaan ini sangat krusial karena menguji efektivitas nyata dari strategi \textit{backup}. Banyak organisasi gagal memulihkan data saat krisis karena mereka hanya berasumsi \textit{backup} mereka berfungsi tanpa pernah memverifikasinya.
+    \end{itemize}
+    
+    \item Bagaimana media atau lokasi penyimpanan data cadangan dilindungi dari akses fisik dan logis yang tidak sah, serta dari kerusakan (misalnya, kebakaran atau banjir)? \citep{sari2023backup}
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Data cadangan sama pentingnya dengan data asli, bahkan bisa menjadi target serangan (misalnya, ransomware yang juga mengenkripsi \textit{backup}). Pertanyaan ini menilai keamanan data cadangan itu sendiri, baik dari sisi kerahasiaan (perlindungan dari akses tidak sah) maupun ketersediaan (perlindungan dari kerusakan fisik).
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Pertanyaan Berdasarkan Kontrol A.6.3: \textit{Information Security Awareness, Education and Training}}
+\begin{enumerate}
+    \item Apakah staf (terutama yang berinteraksi dengan sistem dan data) menerima pelatihan kesadaran keamanan informasi secara rutin dan relevan dengan tugas mereka?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Manusia seringkali menjadi mata rantai terlemah dalam keamanan. Kontrol A.6.3 menekankan pentingnya membangun "human firewall". Pelatihan rutin memastikan kesadaran keamanan tetap segar dalam pikiran staf dan dapat beradaptasi dengan ancaman baru (misalnya, \textit{phishing} atau rekayasa sosial).
+    \end{itemize}
+
+    \item Apakah ada prosedur yang jelas dan mudah diakses bagi staf untuk melaporkan insiden atau kelemahan keamanan yang mereka temukan?
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Pelatihan harus disertai dengan tindakan. Pertanyaan ini menguji apakah staf tidak hanya sadar akan ancaman tetapi juga tahu apa yang harus dilakukan ketika mereka melihatnya. Prosedur pelaporan yang jelas memungkinkan respons insiden yang lebih cepat dan mengurangi potensi kerusakan.
+    \end{itemize}
+    
+    \item Bagaimana kebijakan keamanan informasi kunci (misalnya, kebijakan penggunaan kata sandi, kebijakan penggunaan internet) disosialisasikan dan dipastikan dipahami oleh semua staf? \citep{pratama2022pelatihan}
+    \begin{itemize}
+        \item[\textbf{Rasional:}] Memiliki kebijakan tertulis tidak ada artinya jika tidak ada yang membacanya. Pertanyaan ini menilai efektivitas komunikasi dan sosialisasi kebijakan. Kepatuhan staf terhadap kebijakan secara langsung bergantung pada pemahaman mereka tentang "apa" yang harus dilakukan dan "mengapa" itu penting.
+    \end{itemize}
+\end{enumerate}
+% ===========
+\section{Penerapan Pertanyaan}
+Pertanyaan diterapkan melalui:
+\begin{itemize}
+    \item \textbf{Wawancara}: Dengan manajer, staf operasional, dan teknisi untuk memahami prosedur.
+    \item \textbf{Observasi}: Pemeriksaan langsung sistem POS, Wi-Fi, dan penyimpanan data.
+    \item \textbf{Analisis Dokumen}: Tinjauan kebijakan, log, dan prosedur backup.
+\end{itemize}
+Hasil jawaban dianalisis untuk menentukan kepatuhan, mengidentifikasi kelemahan, dan menyusun rekomendasi \citep{frangky2024implementasi}.
+
+\section{Alasan Memilih Pertanyaan}
+Pemilihan pertanyaan didasarkan pada analisis risiko dan temuan awal dari data yang sudah di kumpulkan saat mengaudit cafe. Alasan spesifik meliputi:
+\begin{itemize}
+    \item \textbf{Relevansi dengan Ruang Lingkup Audit}: Pertanyaan mencakup sistem POS, pembayaran digital, jaringan Wi-Fi, dan data pelanggan, yang kritis bagi operasional. Contohnya, pertanyaan tentang otentikasi POS dipilih karena penggunaan kata sandi bersama meningkatkan risiko akses tidak sah \citep{widodo2022keamanan}.
+    \item \textbf{Kepatuhan terhadap ISO/IEC 27001:2022}: Pertanyaan dihubungkan dengan klausul spesifik untuk memastikan standar terpenuhi. Misalnya, pertanyaan pengelolaan media (A.5.20) menangani risiko kebocoran data pelanggan karena kurangnya enkripsi \citep{ratnasari2021pelindungan}.
+    \item \textbf{Penargetan Risiko Spesifik}: Pertanyaan menyoroti risiko seperti Wi-Fi tidak tersegmentasi, yang memungkinkan serangan siber, dan kurangnya monitoring log, yang menghambat deteksi ancaman \citep{haryanto2021wifi, sari2023backup}.
+    \item \textbf{Dampak Operasional}: Pertanyaan menilai keandalan sistem POS dan kepatuhan PCI DSS untuk mencegah kerugian finansial dan reputasi \citep{permatasari2023manajemen}.
+    \item \textbf{Kelayakan untuk UKM}: Pertanyaan dirancang agar rekomendasi, seperti kata sandi unik dan pelatihan sederhana, dapat diterapkan oleh Kafe Main-Main sebagai UKM \citep{rokhman2018implementasi}.
+\end{itemize}
+
+%------------------------------------------------
+% BAB 4 - MENENTUKAN MATURITAS
+%------------------------------------------------
+\chapter{MENENTUKAN MATURITAS}
+\label{bab:maturitas}
+
+\section{Model Maturitas}
+Penilaian maturitas sistem informasi Kafe Main-Main menggunakan model Capability Maturity Model Integration (CMMI), yang terdiri dari lima tingkat:
+\begin{enumerate}
+    \item \textbf{Level 0 - Nonexistent}: Tidak ada proses yang terdefinisi.
+    \item \textbf{Level 1 - Initial}: Proses bersifat ad-hoc dan tidak terorganisir.
+    \item \textbf{Level 2 - Repeatable}: Proses dasar ada tetapi belum terdokumentasi baik.
+    \item \textbf{Level 3 - Defined}: Proses terdokumentasi dan terstandarisasi.
+    \item \textbf{Level 4 - Managed}: Proses diukur dan dikendalikan.
+    \item \textbf{Level 5 - Optimizing}: Proses terus ditingkatkan berdasarkan data.
+\end{enumerate}
+
+\section{Penilaian Maturitas}
+Berdasarkan audit, sistem informasi Kafe Main-Main berada pada Level 2 (Repeatable). Beberapa kontrol keamanan dasar diterapkan, seperti backup otomatis, tetapi kurang dokumentasi formal dan pengukuran kinerja. Contohnya, autentikasi multifaktor ada pada level admin, tetapi akun POS masih digunakan bersama \citep{widodo2022keamanan, sari2023backup}.
+
+\section{Analisis dan Temuan}
+Temuan utama meliputi:
+\begin{itemize}
+    \item Kurangnya pelatihan rutin keamanan informasi untuk staf.
+    \item Dokumentasi aset teknologi informasi tidak lengkap.
+    \item Prosedur backup tidak terjadwal dan belum diuji secara berkala.
+    \item Jaringan Wi-Fi tidak tersegmentasi, meningkatkan risiko serangan siber \citep{haryanto2021wifi}.
+\end{itemize}
+
+\section{Rencana Peningkatan}
+Untuk mencapai Level 3 atau lebih tinggi, Kafe Main-Main perlu:
+\begin{enumerate}
+    \item Menyusun kebijakan keamanan informasi yang terdokumentasi.
+    \item Melaksanakan pelatihan keamanan berkala untuk staf.
+    \item Memperbarui inventaris aset teknologi informasi.
+    \item Menerapkan jadwal backup dan pengujian pemulihan data \citep{rokhman2018implementasi}.
+\end{enumerate}
+
+%------------------------------------------------
+% BAB 5 - PENUTUP
+%------------------------------------------------
+\chapter{PENUTUP}
+\label{bab:penutup}
+
+\section{Simpulan}
+Audit sistem informasi Kafe Main-Main, berdasarkan standar ISO/IEC 27001:2022, menunjukkan bahwa sistem informasi yang digunakan memiliki beberapa kekuatan namun juga kelemahan signifikan yang perlu segera diatasi. Audit ini berfokus pada sistem \textit{Point of Sale} (POS), pembayaran digital, jaringan Wi-Fi, dan pengelolaan data pelanggan, dengan evaluasi terhadap tujuh klausul utama: A.5.9 (Penggunaan Akun Pengguna), A.5.13 (Pengelolaan Autentikasi), A.5.20 (Perlindungan Informasi Pelanggan), A.5.23 (Logging dan Monitoring), A.5.30 (Segmentasi Jaringan), A.5.32 (Pengelolaan Backup), dan A.6.3 (Kesadaran Keamanan Informasi) \citep{iso27001, auditkafe2025}.
+
+ Kekuatan yang ditemukan meliputi adanya sistem backup otomatis yang terenkripsi untuk data transaksi dan penggunaan autentikasi multifaktor pada level administrator untuk sistem kritis. Namun, kelemahan utama mencakup penggunaan akun POS bersama oleh staf, yang menurunkan akuntabilitas, absennya pelatihan keamanan informasi, kurangnya segmentasi jaringan Wi-Fi publik dan internal, serta ketidakpatuhan terhadap praktik logging aktif dan pengujian backup rutin. Temuan ini konsisten dengan analisis risiko awal yang mengindikasikan potensi ancaman seperti kebocoran data pelanggan, akses tidak sah, dan gangguan operasional akibat serangan siber \citep{widodo2022keamanan, haryanto2021wifi, sari2023backup}.
+
+Berdasarkan model Capability Maturity Model Integration (CMMI), tingkat maturitas keamanan informasi Kafe Main-Main berada pada Level 2 (Repeatable). Hal ini menunjukkan bahwa beberapa proses keamanan telah diterapkan, seperti backup otomatis dan autentikasi dasar, tetapi belum didukung oleh dokumentasi formal, standarisasi, atau pengukuran kinerja yang konsisten. Kelemahan ini meningkatkan risiko terhadap keberlangsungan usaha dan kepercayaan pelanggan, terutama dalam konteks digitalisasi layanan di sektor UKM \citep{permatasari2023manajemen, ratnasari2021pelindungan}. Audit ini membuktikan bahwa meskipun Kafe Main-Main telah mengadopsi teknologi informasi, manajemen keamanan informasi perlu ditingkatkan untuk memenuhi standar internasional dan menjamin operasional yang aman \citep{frangky2024implementasi}.
+
+\section{Rekomendasi}
+Berdasarkan temuan audit, Kafe Main-Main perlu menerapkan langkah-langkah perbaikan yang terarah dan realistis untuk meningkatkan postur keamanan informasi. Rekomendasi berikut disusun berdasarkan klausul ISO/IEC 27001:2022, dengan prioritas dan estimasi waktu implementasi untuk memastikan kelayakan bagi UKM:
+\begin{enumerate}
+    \item \textbf{Menerapkan akun pengguna individu untuk sistem POS (A.5.9)}: Setiap staf harus memiliki akun unik dengan hak akses berbasis peran untuk meningkatkan akuntabilitas. Prosedur pemberian dan pencabutan akses harus didokumentasikan. \textit{Prioritas: Tinggi; Estimasi waktu: 1 bulan} \citep{widodo2022keamanan}.
+    \item \textbf{Menguatkan autentikasi sistem (A.5.13)}: Menerapkan kata sandi kuat (minimal 12 karakter, kombinasi huruf, angka, dan simbol) dan autentikasi dua faktor untuk sistem POS dan pembayaran digital. Audit kata sandi harus dilakukan setiap tiga bulan. \textit{Prioritas: Tinggi; Estimasi waktu: 1-2 bulan} \citep{frangky2024implementasi}.
+    \item \textbf{Melaksanakan pelatihan keamanan informasi rutin (A.6.3)}: Mengadakan pelatihan triwulanan untuk staf tentang ancaman siber, pengelolaan kata sandi, dan prosedur pelaporan insiden. Dokumentasi pelatihan harus disimpan. \textit{Prioritas: Sedang; Estimasi waktu: 3 bulan untuk pelatihan pertama} \citep{iso27001}.
+    \item \textbf{Menganalisis log sistem secara berkala (A.5.23)}: Menerapkan sistem monitoring log otomatis untuk POS dan Wi-Fi, dengan tinjauan mingguan oleh staf TI untuk mendeteksi anomali. Log harus disimpan di media terenkripsi. \textit{Prioritas: Tinggi; Estimasi waktu: 2 bulan} \citep{sari2023backup}.
+    \item \textbf{Memisahkan jaringan Wi-Fi publik dan internal (A.5.30)}: Mengkonfigurasi VLAN atau SSID terpisah untuk jaringan pelanggan dan internal, dengan firewall untuk membatasi akses. Pemantauan lalu lintas jaringan harus dilakukan harian. \textit{Prioritas: Tinggi; Estimasi waktu: 1-2 bulan} \citep{haryanto2021wifi}.
+    \item \textbf{Menjadwalkan dan menguji backup data (A.5.32)}: Menetapkan jadwal backup harian untuk data POS dan pelanggan, dengan pengujian pemulihan bulanan. Data cadangan harus disimpan di lokasi terpisah dan terenkripsi. \textit{Prioritas: Sedang; Estimasi waktu: 2 bulan} \citep{sari2023backup}.
+    \item \textbf{Meninjau kebijakan perlindungan data pelanggan (A.5.20)}: Menerapkan enkripsi AES-256 untuk data loyalitas pelanggan dan membatasi akses hanya untuk manajer. Kebijakan penghapusan data harus ditinjau setiap enam bulan. \textit{Prioritas: Tinggi; Estimasi waktu: 2-3 bulan} \citep{ratnasari2021pelindungan}.
+    \item \textbf{Menyusun kebijakan keamanan informasi formal (A.5.1)}: Mengembangkan dokumen kebijakan yang mencakup semua aspek ISMS, disetujui oleh manajemen, dan disosialisasikan kepada staf. \textit{Prioritas: Sedang; Estimasi waktu: 3-4 bulan} \citep{rokhman2018implementasi}.
+\end{enumerate}
+Implementasi rekomendasi ini akan meningkatkan tingkat maturitas keamanan informasi menuju Level 3 (Defined) dalam model CMMI, mengurangi risiko siber, dan memperkuat kepercayaan pelanggan terhadap Kafe Main-Main \citep{cmmi, nijamaliza2018adaptable}.
+
+%------------------------------------------------
+% DAFTAR PUSTAKA
+%------------------------------------------------
+\renewcommand{\bibname}{Pustaka}
+\bibliographystyle{apalike}
+\bibliography{reference}
+
+%------------------------------------------------
+% AKHIR DOKUMEN
+%------------------------------------------------
+\end{document}
