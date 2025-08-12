@@ -164,9 +164,21 @@ const Home = () => {
           <p className="text-sm xs:text-base sm:text-lg text-orange-600 leading-relaxed font-light max-w-md" data-aos="fade-up" data-aos-delay="1000">
             "Empowering the future through innovative coding and creative design, turning ideas into impactful solutions."
           </p>
-          <div className="flex flex-wrap sm:flex-nowrap gap-3 xs:gap-4 mt-2" data-aos="fade-up" data-aos-delay="1400">
-            <CTAButton href="mailto:nugra315@gmail.com" text="Email Me" icon={Mail} />
+
+          <div
+            className="flex flex-wrap sm:flex-nowrap gap-3 xs:gap-4 mt-2"
+            data-aos="fade-up"
+            data-aos-delay="1400"
+          >
+            <a
+              href="mailto:nugra315@gmail.com"
+              className="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors duration-200 flex items-center gap-2 shadow-sm hover:shadow-md"
+            >
+              <Mail className="w-4 h-4" />
+              Email Me
+            </a>
           </div>
+
           <div className="flex gap-3 xs:gap-4 sm:gap-5 mt-4 xs:mt-6" data-aos="fade-up" data-aos-delay="1600">
             {SOCIAL_LINKS.map((social, index) => <SocialLink key={index} {...social} />)}
           </div>
